@@ -1,0 +1,37 @@
+{
+    "name": "hcp-erp",
+    "version": "1.0.0",
+    "description": "HCP ERP System for paint distribution",
+    "main": "index.js",
+    "scripts": {
+      "start": "firebase serve",
+      "deploy": "firebase deploy",
+      "build:css": "npx tailwindcss -i ./src/assets/css/tailwind.css -o ./public/css/style.css --minify",
+      "build": "npm run build:css && firebase deploy --only hosting",
+      "emulators": "firebase emulators:start"
+    },
+    "keywords": [
+      "erp",
+      "paint",
+      "distribution",
+      "firebase",
+      "web-app"
+    ],
+    "author": "HCP",
+    "license": "ISC",
+    "dependencies": {
+      "firebase": "^11.6.0"
+    },
+    "devDependencies": {
+      "autoprefixer": "^10.4.18",
+      "postcss": "^8.4.35",
+      "tailwindcss": "^3.4.1",
+      "firebase-tools": "^13.4.1"
+    },
+    "engines": {
+      "node": ">=16.0.0"
+    }
+  }
+  "scripts": {
+  "build:css": "postcss src/styles.css -o dist/styles.css"
+}
