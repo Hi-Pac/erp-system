@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCP-ERP | Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+            <div class="p-5 bg-primary-600 dark:bg-primary-700">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-white" data-lang="login">Login</h2>
+                    <p class="mt-1 text-white text-opacity-80" data-lang="login-subtitle">Access your HCP-ERP account</p>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div class="mb-4 flex justify-end">
+                    <button id="langToggle" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+                        <i class="fas fa-globe mr-1"></i> <span data-lang="english">English</span> / <span data-lang="arabic">العربية</span>
+                    </button>
+                    <button id="darkModeToggle" class="ml-4 text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                </div>
+                
+                <div id="errorMsg" class="mb-4 text-red-500 text-sm hidden"></div>
+                
+                <form id="loginForm">
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2" data-lang="email">Email</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </span>
+                            <input type="email" id="email" class="pl-10 w-full py-2 px-3 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="password" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2" data-lang="password">Password</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </span>
+                            <input type="password" id="password" class="pl-10 w-full py-2 px-3 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white" required>
+                            <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <i class="fas fa-eye text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <input id="remember" type="checkbox" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+                            <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300" data-lang="remember-me">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400" data-lang="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-offset-gray-800">
+                            <i class="fas fa-sign-in-alt mr-2"></i> <span data-lang="login-button">Login</span>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-6 flex justify-center">
+                    <span class="text-sm text-gray-600 dark:text-gray-400" data-lang="no-account">Don't have an account?</span>
+                    <a href="register.html" class="ml-1 text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400" data-lang="register-now">Register now</a>
+                </div>
+                
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300 dark:border-gray-700"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400" data-lang="or-continue-with">Or continue with</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 grid grid-cols-2 gap-3">
+                        <button type="button" id="googleLogin" class="w-full py-2 px-4 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <i class="fab fa-google text-red-500 mr-2"></i> Google
+                        </button>
+                        <button type="button" id="microsoftLogin" class="w-full py-2 px-4 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <i class="fab fa-microsoft text-blue-500 mr-2"></i> Microsoft
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="firebase/firebase-config.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/lang.js"></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>
