@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Sales Orders – HCP ERP</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCP-ERP | Sales Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -14,8 +16,18 @@
   <script src="../assets/js/utils.js"></script>
   <script src="../assets/js/sales.js" defer></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-
+<!-- <body class="bg-gray-100 text-gray-800"> -->
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 bg-white dark:bg-gray-800 z-20 w-64 overflow-y-auto md:block flex-shrink-0 transition-transform transform -translate-x-full md:translate-x-0 duration-200 shadow-lg">
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center">
+                    <img src="../assets/images/logo.svg" alt="HCP-ERP Logo" class="h-8 w-auto">
+                    <h1 class="ml-3 text-xl font-semibold text-gray-800 dark:text-white">HCP-ERP</h1>
+                </div>
+            </div>
+          
   <!-- Navbar (same as index.html, adjust paths) -->
   <nav class="bg-white p-4 shadow flex justify-between">
     <a href="../index.html" class="font-bold text-xl">HCP ERP</a>
