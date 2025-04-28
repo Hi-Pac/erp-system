@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Sales Orders – HCP ERP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <!-- Your config & utils -->
+  <script src="../firebase/firebase-config.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/sales.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar (same as index.html, adjust paths) -->
+  <nav class="bg-white p-4 shadow flex justify-between">
+    <a href="../index.html" class="font-bold text-xl">HCP ERP</a>
+    <ul class="flex space-x-4">
+      <li><a href="customers.html" class="nav-link">Customers</a></li>
+      <li><a href="sales.html" class="nav-link font-semibold">Sales Orders</a></li>
+      <li><a href="inventory.html" class="nav-link">Inventory</a></li>
+      <!-- …other modules -->
+    </ul>
+  </nav>
+
+  <div class="p-6">
+    <h1 class="text-2xl font-bold mb-4">Sales Orders</h1>
+    <button id="addOrderBtn"
+            class="mb-4 bg-blue-600 text-white px-4 py-2 rounded">
+      + New Order
+    </button>
+
+    <table class="w-full bg-white rounded shadow">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="p-2">Date</th>
+          <th class="p-2">Customer</th>
+          <th class="p-2">Total</th>
+          <th class="p-2">Status</th>
+          <th class="p-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="ordersTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Modal for Add/Edit -->
+  <div id="orderModal" class="modal">
+    <div class="bg-white p-6 rounded shadow w-full max-w-md">
+      <h2 id="orderModalTitle" class="text-xl font-bold mb-4">New Order</h2>
+      <form id="orderForm" class="space-y-4">
+        <input type="date" id="orderDate" class="w-full p-2 border rounded" required />
+        <input type="text" id="orderCustomer" placeholder="Customer ID" class="w-full p-2 border rounded" required />
+        <input type="number" id="orderTotal" placeholder="Total Amount" class="w-full p-2 border rounded" required />
+        <select id="orderStatus" class="w-full p-2 border rounded">
+          <option value="Pending">Pending</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <div class="flex justify-end space-x-2">
+          <button type="button" onclick="toggleModal('orderModal')" class="px-4 py-2">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-green-600 text-white">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
