@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoices – HCP ERP</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Firebase SDKs (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <!-- Config & Utils -->
+  <script src="../firebase/firebase-config.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <!-- Invoices Logic -->
+  <script src="../assets/js/invoices.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <a href="../index.html" class="font-bold text-xl">HCP ERP</a>
+    <ul class="flex space-x-4">
+      <li><a href="customers.html" class="nav-link">Customers</a></li>
+      <li><a href="sales.html" class="nav-link">Sales Orders</a></li>
+      <li><a href="inventory.html" class="nav-link">Inventory</a></li>
+      <li><a href="invoices.html" class="nav-link font-semibold">Invoices</a></li>
+      <!-- other modules -->
+    </ul>
+  </nav>
+
+  <div class="p-6">
+    <h1 class="text-2xl font-bold mb-4">Invoices</h1>
+    <button id="addInvoiceBtn" class="mb-4 bg-blue-600 text-white px-4 py-2 rounded">
+      + New Invoice
+    </button>
+
+    <table class="w-full bg-white rounded shadow">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="p-2">Invoice #</th>
+          <th class="p-2">Date</th>
+          <th class="p-2">Customer</th>
+          <th class="p-2">Amount</th>
+          <th class="p-2">Status</th>
+          <th class="p-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="invoicesTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Modal for Add/Edit Invoice -->
+  <div id="invoiceModal" class="modal">
+    <div class="bg-white p-6 rounded shadow w-full max-w-md">
+      <h2 id="invoiceModalTitle" class="text-xl font-bold mb-4">New Invoice</h2>
+      <form id="invoiceForm" class="space-y-4">
+        <input type="text" id="invoiceNumber" placeholder="Invoice #" class="w-full p-2 border rounded" required />
+        <input type="date" id="invoiceDate" class="w-full p-2 border rounded" required />
+        <input type="text" id="invoiceCustomer" placeholder="Customer ID" class="w-full p-2 border rounded" required />
+        <input type="number" id="invoiceAmount" placeholder="Amount" class="w-full p-2 border rounded" required />
+        <select id="invoiceStatus" class="w-full p-2 border rounded">
+          <option value="Unpaid">Unpaid</option>
+          <option value="Paid">Paid</option>
+        </select>
+        <div class="flex justify-end space-x-2">
+          <button type="button" onclick="toggleModal('invoiceModal')" class="px-4 py-2">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-green-600 text-white">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
