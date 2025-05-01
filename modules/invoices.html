@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inventory - HCP-ERP</title>
+  <title>Invoices - HCP-ERP</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
@@ -19,7 +19,9 @@
           <li><a href="../index.html" class="block p-4 text-gray-700 dark:text-gray-200">Dashboard</a></li>
           <li><a href="customers.html" class="block p-4 text-gray-700 dark:text-gray-200">Customers</a></li>
           <li><a href="sales.html" class="block p-4 text-gray-700 dark:text-gray-200">Sales Orders</a></li>
-          <li><a href="inventory.html" class="block p-4 text-gray-700 dark:text-gray-200 font-bold">Inventory</a></li>
+          <li><a href="inventory.html" class="block p-4 text-gray-700 dark:text-gray-200">Inventory</a></li>
+          <li><a href="invoices.html" class="block p-4 text-gray-700 dark:text-gray-200 font-bold">Invoices</a></li>
+          <li><a href="reports.html" class="block p-4 text-gray-700 dark:text-gray-200">Reports</a></li>
         </ul>
       </nav>
     </aside>
@@ -27,23 +29,24 @@
     <!-- Main Content -->
     <main class="ml-64 p-6">
       <header class="flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Inventory Management</h1>
-        <button id="add-item-btn" class="px-4 py-2 bg-blue-500 text-white rounded">Add Item</button>
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Invoices Management</h1>
+        <button id="add-invoice-btn" class="px-4 py-2 bg-blue-500 text-white rounded">Add Invoice</button>
       </header>
 
-      <!-- Inventory Table -->
+      <!-- Invoices Table -->
       <section class="mt-6">
         <table class="w-full table-auto bg-white dark:bg-gray-800 shadow rounded">
           <thead>
             <tr class="bg-gray-200 dark:bg-gray-700">
-              <th class="p-4 text-left">Item Name</th>
-              <th class="p-4 text-left">Quantity</th>
-              <th class="p-4 text-left">Price</th>
+              <th class="p-4 text-left">Invoice ID</th>
+              <th class="p-4 text-left">Customer</th>
+              <th class="p-4 text-left">Amount</th>
+              <th class="p-4 text-left">Date</th>
               <th class="p-4 text-left">Actions</th>
             </tr>
           </thead>
-          <tbody id="inventory-table-body">
-            <!-- Inventory items will be dynamically loaded here -->
+          <tbody id="invoice-table-body">
+            <!-- Invoices will be dynamically loaded here -->
           </tbody>
         </table>
       </section>
@@ -51,6 +54,6 @@
   </div>
 
   <script src="../assets/js/app.js"></script>
-  <script src="../assets/js/inventory.js"></script>
+  <script src="../assets/js/invoices.js"></script>
 </body>
 </html>
