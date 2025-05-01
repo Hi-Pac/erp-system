@@ -11,13 +11,15 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 // Firebase Configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyD7O1-SFhY3XUc4ZL2MWo83nl-DfvGq3LI",
+  authDomain: "erp-system-24f05.firebaseapp.com",
+  projectId: "erp-system-24f05",
+  storageBucket: "erp-system-24f05.firebasestorage.app",
+  messagingSenderId: "1015081257227",
+  appId: "1:1015081257227:web:ab95b6dbe9b678ef4cba0e",
+  measurementId: "G-3VH3396ZDG"
 };
 
 // Initialize Firebase
