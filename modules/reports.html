@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports - HCP-ERP</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+  <div id="app">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white dark:bg-gray-800 fixed h-full">
+      <div class="p-4">
+        <img src="../assets/images/logo.png" alt="HCP-ERP Logo" class="w-32 mx-auto">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html" class="block p-4 text-gray-700 dark:text-gray-200">Dashboard</a></li>
+          <li><a href="customers.html" class="block p-4 text-gray-700 dark:text-gray-200">Customers</a></li>
+          <li><a href="sales.html" class="block p-4 text-gray-700 dark:text-gray-200">Sales Orders</a></li>
+          <li><a href="inventory.html" class="block p-4 text-gray-700 dark:text-gray-200">Inventory</a></li>
+          <li><a href="invoices.html" class="block p-4 text-gray-700 dark:text-gray-200">Invoices</a></li>
+          <li><a href="reports.html" class="block p-4 text-gray-700 dark:text-gray-200 font-bold">Reports</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 p-6">
+      <header class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Sales Reports</h1>
+      </header>
+
+      <!-- Chart Section -->
+      <section class="mt-6">
+        <canvas id="salesReportChart" class="w-full h-96"></canvas>
+      </section>
+    </main>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/reports.js"></script>
+</body>
+</html>
