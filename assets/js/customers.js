@@ -1,4 +1,4 @@
-// sales.js
+// customers.js
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import {
@@ -27,49 +27,48 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // DOM Elements
-const salesTableBody = document.getElementById("sales-table-body");
-const addSaleBtn = document.getElementById("add-sale-btn");
+const customerTableBody = document.getElementById("customer-table-body");
+const addCustomerBtn = document.getElementById("add-customer-btn");
 
-// Load Sales Orders
-async function loadSalesOrders() {
-  const querySnapshot = await getDocs(collection(db, "sales"));
-  salesTableBody.innerHTML = ""; // Clear table
+// Load Customers
+async function loadCustomers() {
+  const querySnapshot = await getDocs(collection(db, "customers"));
+  customerTableBody.innerHTML = ""; // Clear table
   querySnapshot.forEach((doc) => {
-    const order = doc.data();
+    const customer = doc.data();
     const row = `
       <tr>
-        <td class="p-4">${doc.id}</td>
-        <td class="p-4">${order.customer}</td>
-        <td class="p-4">${order.total}</td>
-        <td class="p-4">${order.date}</td>
+        <td class="p-4">${customer.name}</td>
+        <td class="p-4">${customer.email}</td>
+        <td class="p-4">${customer.phone}</td>
         <td class="p-4">
           <button class="text-red-500 delete-btn" data-id="${doc.id}">Delete</button>
         </td>
       </tr>
     `;
-    salesTableBody.innerHTML += row;
+    customerTableBody.innerHTML += row;
   });
 
   // Attach delete event listeners
   document.querySelectorAll(".delete-btn").forEach((btn) => {
     btn.addEventListener("click", async (e) => {
       const id = e.target.dataset.id;
-      await deleteDoc(doc(db, "sales", id));
-      loadSalesOrders();
+      await deleteDoc(doc(db, "customers", id));
+      loadCustomers();
     });
   });
 }
 
-// Add Sales Order
-addSaleBtn.addEventListener("click", async () => {
-  const customer = prompt("Enter Customer Name:");
-  const total = prompt("Enter Order Total:");
-  const date = new Date().toISOString().split("T")[0]; // Current Date
-  if (customer && total) {
-    await addDoc(collection(db, "sales"), { customer, total, date });
-    loadSalesOrders();
+// Add Customer
+addCustomerBtn.addEventListener("click", async () => {
+  const name = prompt("Enter Customer Name:");
+  const email = prompt("Enter Customer Email:");
+  const phone = prompt("Enter Customer Phone:");
+  if (name && email && phone) {
+    await addDoc(collection(db, "customers"), { name, email, phone });
+    loadCustomers();
   }
 });
 
 // Initial Load
-loadSalesOrders();
+loadCustomers();

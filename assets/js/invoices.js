@@ -1,4 +1,4 @@
-// sales.js
+// invoices.js
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import {
@@ -21,55 +21,54 @@ const firebaseConfig = {
   appId: "1:1015081257227:web:ab95b6dbe9b678ef4cba0e",
   measurementId: "G-3VH3396ZDG"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // DOM Elements
-const salesTableBody = document.getElementById("sales-table-body");
-const addSaleBtn = document.getElementById("add-sale-btn");
+const invoiceTableBody = document.getElementById("invoice-table-body");
+const addInvoiceBtn = document.getElementById("add-invoice-btn");
 
-// Load Sales Orders
-async function loadSalesOrders() {
-  const querySnapshot = await getDocs(collection(db, "sales"));
-  salesTableBody.innerHTML = ""; // Clear table
+// Load Invoices
+async function loadInvoices() {
+  const querySnapshot = await getDocs(collection(db, "invoices"));
+  invoiceTableBody.innerHTML = ""; // Clear table
   querySnapshot.forEach((doc) => {
-    const order = doc.data();
+    const invoice = doc.data();
     const row = `
       <tr>
         <td class="p-4">${doc.id}</td>
-        <td class="p-4">${order.customer}</td>
-        <td class="p-4">${order.total}</td>
-        <td class="p-4">${order.date}</td>
+        <td class="p-4">${invoice.customer}</td>
+        <td class="p-4">${invoice.amount}</td>
+        <td class="p-4">${invoice.date}</td>
         <td class="p-4">
           <button class="text-red-500 delete-btn" data-id="${doc.id}">Delete</button>
         </td>
       </tr>
     `;
-    salesTableBody.innerHTML += row;
+    invoiceTableBody.innerHTML += row;
   });
 
   // Attach delete event listeners
   document.querySelectorAll(".delete-btn").forEach((btn) => {
     btn.addEventListener("click", async (e) => {
       const id = e.target.dataset.id;
-      await deleteDoc(doc(db, "sales", id));
-      loadSalesOrders();
+      await deleteDoc(doc(db, "invoices", id));
+      loadInvoices();
     });
   });
 }
 
-// Add Sales Order
-addSaleBtn.addEventListener("click", async () => {
+// Add Invoice
+addInvoiceBtn.addEventListener("click", async () => {
   const customer = prompt("Enter Customer Name:");
-  const total = prompt("Enter Order Total:");
+  const amount = prompt("Enter Invoice Amount:");
   const date = new Date().toISOString().split("T")[0]; // Current Date
-  if (customer && total) {
-    await addDoc(collection(db, "sales"), { customer, total, date });
-    loadSalesOrders();
+  if (customer && amount) {
+    await addDoc(collection(db, "invoices"), { customer, amount, date });
+    loadInvoices();
   }
 });
 
 // Initial Load
-loadSalesOrders();
+loadInvoices();

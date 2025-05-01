@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Customers - HCP-ERP</title>
+  <title>Reports - HCP-ERP</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900">
   <div id="app">
@@ -17,9 +18,11 @@
       <nav>
         <ul>
           <li><a href="../index.html" class="block p-4 text-gray-700 dark:text-gray-200">Dashboard</a></li>
-          <li><a href="customers.html" class="block p-4 text-gray-700 dark:text-gray-200 font-bold">Customers</a></li>
+          <li><a href="customers.html" class="block p-4 text-gray-700 dark:text-gray-200">Customers</a></li>
           <li><a href="sales.html" class="block p-4 text-gray-700 dark:text-gray-200">Sales Orders</a></li>
           <li><a href="inventory.html" class="block p-4 text-gray-700 dark:text-gray-200">Inventory</a></li>
+          <li><a href="invoices.html" class="block p-4 text-gray-700 dark:text-gray-200">Invoices</a></li>
+          <li><a href="reports.html" class="block p-4 text-gray-700 dark:text-gray-200 font-bold">Reports</a></li>
         </ul>
       </nav>
     </aside>
@@ -27,30 +30,17 @@
     <!-- Main Content -->
     <main class="ml-64 p-6">
       <header class="flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Customer Management</h1>
-        <button id="add-customer-btn" class="px-4 py-2 bg-blue-500 text-white rounded">Add Customer</button>
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Sales Reports</h1>
       </header>
 
-      <!-- Customer Table -->
+      <!-- Chart Section -->
       <section class="mt-6">
-        <table class="w-full table-auto bg-white dark:bg-gray-800 shadow rounded">
-          <thead>
-            <tr class="bg-gray-200 dark:bg-gray-700">
-              <th class="p-4 text-left">Name</th>
-              <th class="p-4 text-left">Email</th>
-              <th class="p-4 text-left">Phone</th>
-              <th class="p-4 text-left">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="customer-table-body">
-            <!-- Customers will be dynamically loaded here -->
-          </tbody>
-        </table>
+        <canvas id="salesReportChart" class="w-full h-96"></canvas>
       </section>
     </main>
   </div>
 
   <script src="../assets/js/app.js"></script>
-  <script src="../assets/js/customers.js"></script>
+  <script src="../assets/js/reports.js"></script>
 </body>
 </html>
